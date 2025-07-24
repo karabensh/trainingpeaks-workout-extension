@@ -5,23 +5,23 @@ This extension helps automate structured workout creation in TrainingPeaks.
 ---
 
 ## 🧱 Project Structure
-trainingpeaks-workout-extension/
-├── assets/ # Static assets like icons
-├── dist/ # Build output (ignored in Git)
-├── scripts/ # Utility scripts (e.g., template renderer)
-├── src/ # Extension source code
-│ ├── constants/ # Shared constants
-│ ├── background.js # Background script
-│ ├── content.js # Content script injected into TrainingPeaks
-│ ├── popup.js # Popup behavior
-│ ├── popup.ejs # EJS template for popup.html
-│ ├── message-handler.js # Handles messaging between scripts
-│ └── workout*.js # Workout logic
-├── tests/ # Jest unit tests
-├── esbuild.config.mjs # ESM-based build script using esbuild
-├── manifest.chrome.json # Chrome-specific manifest template
-├── manifest.firefox.json # Firefox-specific manifest template
-└── package.json
+trainingpeaks-workout-extension/  
+├── assets/ # Static assets like icons  
+├── dist/ # Build output (ignored in Git)  
+├── scripts/ # Utility scripts (e.g., template renderer)  
+├── src/ # Extension source code  
+│ ├── constants/ # Shared constants  
+│ ├── background.js # Background script  
+│ ├── content.js # Content script injected into TrainingPeaks  
+│ ├── popup.js # Popup behavior  
+│ ├── popup.ejs # EJS template for popup.html  
+│ ├── message-handler.js # Handles messaging between scripts  
+│ └── workout*.js # Workout logic  
+├── tests/ # Jest unit tests  
+├── esbuild.config.mjs # ESM-based build script using esbuild  
+├── manifest.chrome.json # Chrome-specific manifest template  
+├── manifest.firefox.json # Firefox-specific manifest template  
+└── package.json  
 
 - `src/` — Contains modular JavaScript files
 - `src/popup.html`, `assets/` — Static files
