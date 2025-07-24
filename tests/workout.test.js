@@ -1,19 +1,33 @@
-const { clickWarmUp } = require('../src/workout');
+const { clickWorkoutBlockByTitle } = require('../src/workout');
 
-test('clicks the warm up block div by title attribute', () => {
+test('clicks the block with title "Warm up"', () => {
   document.body.innerHTML = `
     <div class="block" draggable="true" title="Warm up">
-      <svg class="warmUp" viewBox="0 0 1000 1000" preserveAspectRatio="none">
-        <polygon points="0 1000, 0 0, 1000 0, 1000 1000"></polygon>
-      </svg>
+      <svg class="warmUp"><polygon points="..." /></svg>
     </div>
   `;
 
-  const warmupDiv = document.querySelector('div.block[title="Warm up"]');
+  const warmUp = document.querySelector('div.block[title="Warm up"]');
   const clickHandler = jest.fn();
-  warmupDiv.addEventListener('click', clickHandler);
+  warmUp.addEventListener('click', clickHandler);
 
-  clickWarmUp(document);
+  clickWorkoutBlockByTitle('Warm up');
 
   expect(clickHandler).toHaveBeenCalled();
+});
+
+test('does not click a block with a different title', () => {
+  document.body.innerHTML = `
+    <div class="block" draggable="true" title="Cool down">
+      <svg class="coolDown"><polygon points="..." /></svg>
+    </div>
+  `;
+
+  const coolDown = document.querySelector('div.block[title="Cool down"]');
+  const clickHandler = jest.fn();
+  coolDown.addEventListener('click', clickHandler);
+
+  clickWorkoutBlockByTitle('Warm up');
+
+  expect(clickHandler).not.toHaveBeenCalled();
 });
