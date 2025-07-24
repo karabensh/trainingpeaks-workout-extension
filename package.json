@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
-    "build:chrome": "node esbuild.config.js chrome",
-    "build:firefox": "node esbuild.config.js firefox"
+    "build:chrome": "node esbuild.config.mjs chrome",
+    "build:firefox": "node esbuild.config.mjs firefox"
   },
   "repository": {
     "type": "git",
@@ -15,7 +15,7 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "type": "commonjs",
+  "type": "module",
   "bugs": {
     "url": "https://github.com/karabensh/trainingpeaks-workout-extension/issues"
   },
@@ -26,6 +26,7 @@
     "jest-environment-jsdom": "^30.0.5"
   },
   "dependencies": {
+    "ejs": "^3.1.10",
     "webextension-polyfill": "^0.12.0"
   }
 }

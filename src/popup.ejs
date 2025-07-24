@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>TP Workout Builder</title>
+	<style>
+		body { font-family: sans-serif; margin: 10px; width: 300px; }
+		textarea { width: 100%; height: 150px; }
+		button { margin-top: 10px; width: 100%; padding: 5px; }
+	</style>
+</head>
+<body>
+	<h3>Paste Workout</h3>
+	<textarea id="workoutInput" placeholder="e.g. 10 min Z2, 4x(3 min Z4 / 2 min Z1), 5 min Z1"></textarea>
+	<!-- <button id="buildBtn">Build Workout</button>
+	<button id="testNamedBlockBtn">Test Named Block</button>
+	<button id="createBaseWorkoutBtn">Create Base Workout</button> -->
+
+    <button id="<%= UI_IDS.BUILD_BTN %>">Build Workout</button>
+	<button id="<%= UI_IDS.TEST_NAMED_BLOCK_BTN %>">Test Named Block</button>
+	<button id="<%= UI_IDS.CREATE_BASE_WORKOUT_BTN %>">Create Base Workout</button>
+    <script src="popup.js"></script>
+
+	<!-- This gets replaced by bundled esbuild output -->
+	<!-- <script type="module" src="./popup.js"></script> -->
+    <!-- <script src="./popup.js"></script> -->
+</body>
+</html>

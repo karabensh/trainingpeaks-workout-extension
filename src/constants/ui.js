@@ -1,5 +1,5 @@
 // src/constants/ui.js
-export const ID_NAMES = Object.freeze({
+export const UI_IDS = Object.freeze({
 	INPUT: 'workoutInput',
 	BUILD_BTN: 'buildBtn',
 	TEST_NAMED_BLOCK_BTN: 'testNamedBlockBtn',
