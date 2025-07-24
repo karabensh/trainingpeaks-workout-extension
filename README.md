@@ -74,8 +74,8 @@ If you'd like to test Manifest V3 in Firefox:
 
 1. Visit `about:config`
 2. Enable:
-   - `extensions.manifestV3.enabled` → `true`
-   - `extensions.backgroundServiceWorker.enabled` → `true`
+	 - `extensions.manifestV3.enabled` → `true`
+	 - `extensions.backgroundServiceWorker.enabled` → `true`
 3. Restart Firefox
 
 Or use the Manifest V2 fallback (`build:firefox`) for full compatibility.

@@ -4,7 +4,7 @@ import { messageHandler } from "./message-handler";
 console.log("Content script active");
 
 browser.runtime.onMessage.addListener((message) => {
-  console.log("Received message:", message);
+	console.log("Received message:", message);
 
-  messageHandler(message);
+	messageHandler(message);
 });

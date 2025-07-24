@@ -1,32 +1,32 @@
 {
-  "name": "trainingpeaks-workout-extension",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "jest",
-    "build:chrome": "node esbuild.config.mjs chrome",
-    "build:firefox": "node esbuild.config.mjs firefox"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/karabensh/trainingpeaks-workout-extension.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "type": "module",
-  "bugs": {
-    "url": "https://github.com/karabensh/trainingpeaks-workout-extension/issues"
-  },
-  "homepage": "https://github.com/karabensh/trainingpeaks-workout-extension#readme",
-  "devDependencies": {
-    "esbuild": "^0.25.8",
-    "jest": "^30.0.5",
-    "jest-environment-jsdom": "^30.0.5"
-  },
-  "dependencies": {
-    "ejs": "^3.1.10",
-    "webextension-polyfill": "^0.12.0"
-  }
+	"name": "trainingpeaks-workout-extension",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"test": "jest",
+		"build:chrome": "node esbuild.config.mjs chrome",
+		"build:firefox": "node esbuild.config.mjs firefox"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/karabensh/trainingpeaks-workout-extension.git"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"type": "module",
+	"bugs": {
+		"url": "https://github.com/karabensh/trainingpeaks-workout-extension/issues"
+	},
+	"homepage": "https://github.com/karabensh/trainingpeaks-workout-extension#readme",
+	"devDependencies": {
+		"esbuild": "^0.25.8",
+		"jest": "^30.0.5",
+		"jest-environment-jsdom": "^30.0.5"
+	},
+	"dependencies": {
+		"ejs": "^3.1.10",
+		"webextension-polyfill": "^0.12.0"
+	}
 }

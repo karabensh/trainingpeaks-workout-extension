@@ -5,7 +5,7 @@ document.getElementById(UI_IDS.BUILD_BTN).addEventListener("click", async () => 
 	const input = document.getElementById(UI_IDS.INPUT).value;
 	let workoutData;
 	try {
-        console.log("Input received: " + input);
+				console.log("Input received: " + input);
 		workoutData = JSON.parse(input);
 	} catch (e) {
 		alert("Invalid JSON: " + e.message);
@@ -26,11 +26,11 @@ function buildWorkoutFromJson(data) {
 }
 
 document.getElementById(UI_IDS.TEST_NAMED_BLOCK_BTN).addEventListener("click", async () => {
-  const [tab] = await browser.tabs.query({ active: true, currentWindow: true });
-  await browser.tabs.sendMessage(tab.id, { action: UI_IDS.TEST_NAMED_BLOCK_BTN });
+	const [tab] = await browser.tabs.query({ active: true, currentWindow: true });
+	await browser.tabs.sendMessage(tab.id, { action: UI_IDS.TEST_NAMED_BLOCK_BTN });
 });
 
 document.getElementById(UI_IDS.CREATE_BASE_WORKOUT_BTN).addEventListener("click", async () => {
-  const [tab] = await browser.tabs.query({ active: true, currentWindow: true });
-  await browser.tabs.sendMessage(tab.id, { action: UI_IDS.CREATE_BASE_WORKOUT_BTN });
+	const [tab] = await browser.tabs.query({ active: true, currentWindow: true });
+	await browser.tabs.sendMessage(tab.id, { action: UI_IDS.CREATE_BASE_WORKOUT_BTN });
 });
