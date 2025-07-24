@@ -1,7 +1,7 @@
 import { clickWorkoutBlockByTitle } from "./workout";
 import * as WorkoutBlockTypes from './constants/workout-block-types.js';
 import { UI_IDS } from './constants/ui.js';
-import { createBaseWorkout } from './workout-creator.js';
+import { createWorkout } from './workout-creator.js';
 
 var count = 0;
 
@@ -15,6 +15,6 @@ export function messageHandler(message) {
 		count++;
 	} else if (message.action === UI_IDS.CREATE_BASE_WORKOUT_BTN) {
 		// TODO: Implement the logic to create a base workout
-		createBaseWorkout()
+		createWorkout()
 	}
 };

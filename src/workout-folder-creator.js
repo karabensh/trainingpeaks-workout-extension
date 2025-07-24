@@ -10,13 +10,26 @@ export function openOrCreateWorkoutFolder() {
 
 const WORKOUT_FOLDER_NAME = 'EZPZ TP Creator';
 
-function doesWorkoutFolderExist() {
+export function getWorkoutFolder() {
 	const elements = document.querySelectorAll(".workoutLibraryFolder .titleContain");
 	for (const element of elements) {
-		if (element.innerText == WORKOUT_FOLDER_NAME) {
-			console.log('Found extension\'s folder:', element);
-			return true;
+		if (element.innerText.trim() == WORKOUT_FOLDER_NAME) {
+			const header = element.closest(".listHeader");
+			if (header) {
+				console.log("Found matching listHeader:", header);
+				return header;
+			}
 		}
+	}
+
+	console.log('Extension\'s folder not found.');
+	return null;
+}
+
+function doesWorkoutFolderExist() {
+	if (getWorkoutFolder() !== null) {
+		console.log('Extension\'s folder exists.');
+		return true;
 	}
 
 	console.log('Extension\'s folder not found.');
