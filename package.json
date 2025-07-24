@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "build:chrome": "node esbuild.config.js chrome",
+    "build:firefox": "node esbuild.config.js firefox"
   },
   "repository": {
     "type": "git",
@@ -19,7 +21,11 @@
   },
   "homepage": "https://github.com/karabensh/trainingpeaks-workout-extension#readme",
   "devDependencies": {
+    "esbuild": "^0.25.8",
     "jest": "^30.0.5",
     "jest-environment-jsdom": "^30.0.5"
+  },
+  "dependencies": {
+    "webextension-polyfill": "^0.12.0"
   }
 }

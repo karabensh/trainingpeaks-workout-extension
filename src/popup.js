@@ -1,3 +1,5 @@
+import browser from "webextension-polyfill";
+
 document.getElementById("buildBtn").addEventListener("click", async () => {
 	const input = document.getElementById("workoutInput").value;
 	let workoutData;
@@ -21,3 +23,8 @@ function buildWorkoutFromJson(data) {
 	console.log("Received structured workout: " + JSON.stringify(data, null, 2));
 	alert("Building workout from JSON...\n(Actual implementation coming soon)");
 }
+
+document.getElementById("testClickWarmup").addEventListener("click", async () => {
+  const [tab] = await browser.tabs.query({ active: true, currentWindow: true });
+  await browser.tabs.sendMessage(tab.id, { action: "clickWarmup" });
+});

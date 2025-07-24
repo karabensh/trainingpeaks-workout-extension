@@ -1,0 +1,33 @@
+{
+  "manifest_version": 2,
+  "name": "TrainingPeaks Workout Builder",
+  "version": "1.0",
+  "description": "Automate creation of structured workouts in TrainingPeaks",
+  "permissions": [
+    "activeTab",
+    "storage"
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "https://app.trainingpeaks.com/*"
+      ],
+      "js": [
+        "content.js"
+      ]
+    }
+  ],
+  "background": {
+    "scripts": [
+      "background.js"
+    ]
+  },
+  "browser_action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "assets/icon.png",
+      "48": "assets/icon.png",
+      "128": "assets/icon.png"
+    }
+  }
+}
