@@ -1,4 +1,5 @@
 import { openOrCreateWorkoutFolder, getWorkoutFolder } from './workout-folder-creator.js';
+import { waitForElement } from './utils.js';
 
 export function createWorkout() {
 	openWorkoutLibraryIfNeeded();
@@ -33,6 +34,7 @@ function createWorkoutItem() {
 	clickCreateWorkoutButton();
 	inputWorkoutName("Test My Workout");
 	submitFolderCreation();
+	selectWorkoutType("Run");
 }
 
 function openOptionsMenu(folderElement) {
@@ -65,7 +67,7 @@ function inputWorkoutName(workoutName) {
 		return;
 	}
 
-	folderNameInput.value = "Test My Workout";
+	folderNameInput.value = workoutName;
 	folderNameInput.dispatchEvent(new Event('input', { bubbles: true }));
 	folderNameInput.dispatchEvent(new KeyboardEvent('keydown', { key: 'Enter', bubbles: true }));
 	console.log("Workout name entered... Need to create it.");
@@ -81,4 +83,24 @@ function submitFolderCreation() {
 		}
 	}
 	console.error("'Add' button not found for workout creation.");
+}
+
+async function selectWorkoutType(workoutType) {
+	try {
+		// Wait for the buttons to load
+		await waitForElement(".newItemViewWorkouts button");
+
+		const workoutTypeButtons = document.querySelectorAll(".newItemViewWorkouts button");
+		for (const button of workoutTypeButtons) {
+			if (button.innerText.trim() == workoutType) {
+				button.dispatchEvent(new MouseEvent('click', { bubbles: true }));
+				console.log(`Workout type ${workoutType} selected.`);
+				return;
+			}
+		}
+		
+		console.error(`Workout type button for ${workoutType} not found.`);
+	} catch (err) {
+		console.error("Workout type selector never appeared:", err);
+	}
 }
