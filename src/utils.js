@@ -17,3 +17,16 @@ export function waitForElement(selector, timeout = 5000) {
 		}, 100);
 	});
 }
+
+export async function waitForElementThenClick(selector, timeout = 5000) {
+	await waitForElement(selector, timeout);
+
+	const el = document.querySelector(selector);
+	if (el) {
+		el.dispatchEvent(new MouseEvent('click', { bubbles: true }));
+		console.log(`Element clicked: ${selector}`);
+	}
+	else {
+		console.error(`Element not found for clicking: ${selector}`);
+	}
+}

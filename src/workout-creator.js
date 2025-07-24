@@ -1,10 +1,11 @@
 import { openOrCreateWorkoutFolder, getWorkoutFolder } from './workout-folder-creator.js';
-import { waitForElement } from './utils.js';
+import { waitForElement, waitForElementThenClick } from './utils.js';
 
 export function createWorkout() {
 	openWorkoutLibraryIfNeeded();
 	openOrCreateWorkoutFolder();
 	createWorkoutItem();
+	startStructuredWorkoutCreation();
 }
 
 function openWorkoutLibraryIfNeeded() {
@@ -103,4 +104,10 @@ async function selectWorkoutType(workoutType) {
 	} catch (err) {
 		console.error("Workout type selector never appeared:", err);
 	}
+}
+
+function startStructuredWorkoutCreation() {
+	// This function starts the structured workout creation process.
+	console.log("Starting structured workout creation...");
+	waitForElementThenClick('.buildWorkout')
 }
