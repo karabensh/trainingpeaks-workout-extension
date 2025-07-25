@@ -21,9 +21,11 @@
 	},
 	"homepage": "https://github.com/karabensh/trainingpeaks-workout-extension#readme",
 	"devDependencies": {
+		"@types/node": "^24.1.0",
 		"esbuild": "^0.25.8",
 		"jest": "^30.0.5",
-		"jest-environment-jsdom": "^30.0.5"
+		"jest-environment-jsdom": "^30.0.5",
+		"typescript": "^5.8.3"
 	},
 	"dependencies": {
 		"ejs": "^3.1.10",
