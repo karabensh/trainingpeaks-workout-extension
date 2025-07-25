@@ -1,11 +1,10 @@
 import { openOrCreateWorkoutFolder, getWorkoutFolder } from './workout-folder-creator.js';
 import { waitForElement, waitForElementThenClick } from './utils.js';
 
-export function createWorkout() {
+export async function initWorkout() {
 	openWorkoutLibraryIfNeeded();
 	openOrCreateWorkoutFolder();
-	createWorkoutItem();
-	startStructuredWorkoutCreation();
+	await createWorkoutItem();
 }
 
 function openWorkoutLibraryIfNeeded() {
@@ -24,7 +23,7 @@ function openWorkoutLibraryIfNeeded() {
 	}
 }
 
-function createWorkoutItem() {
+async function createWorkoutItem() {
 	element = getWorkoutFolder();
 	if (element === null) {
 		console.error("Workout folder not found, cannot create workout.");
@@ -32,10 +31,10 @@ function createWorkoutItem() {
 	}
 
 	openOptionsMenu(element);
-	clickCreateWorkoutButton();
-	inputWorkoutName("Test My Workout");
-	submitFolderCreation();
-	selectWorkoutType("Run");
+	await clickCreateWorkoutButton();
+	await inputWorkoutName("Test My Workout");
+	await submitFolderCreation();
+	await selectWorkoutType("Run");
 }
 
 function openOptionsMenu(folderElement) {
@@ -50,19 +49,13 @@ function openOptionsMenu(folderElement) {
 	console.log("Open Options button clicked, can now create workout...");
 }
 
-function clickCreateWorkoutButton() {
-	const createWorkoutButton = document.querySelector('[data_cy="addWorkout"]');
-	if (!createWorkoutButton) {
-		console.error("Create workout button not found in workout library controls.");
-		return;
-	}
-
-	createWorkoutButton.dispatchEvent(new MouseEvent('click', { bubbles: true }));
+async function clickCreateWorkoutButton() {
+	await waitForElementThenClick('[data_cy="addWorkout"]');
 	console.log("Create workout button clicked, now creating workout...");
 }
 
-function inputWorkoutName(workoutName) {
-	const folderNameInput = document.querySelector('.createGroup input');
+async function inputWorkoutName(workoutName) {
+	const folderNameInput = await waitForElement('.createGroup input');
 	if (!folderNameInput) {
 		console.error("Workout name input not found.");
 		return;
@@ -74,7 +67,8 @@ function inputWorkoutName(workoutName) {
 	console.log("Workout name entered... Need to create it.");
 }
 
-function submitFolderCreation() {
+async function submitFolderCreation() {
+	await waitForElement('.createGroup button');
 	const buttons = document.querySelectorAll(".createGroup button");
 	for (const button of buttons) {
 		if (button.innerText.trim() == 'Add') {
@@ -104,10 +98,4 @@ async function selectWorkoutType(workoutType) {
 	} catch (err) {
 		console.error("Workout type selector never appeared:", err);
 	}
-}
-
-function startStructuredWorkoutCreation() {
-	// This function starts the structured workout creation process.
-	console.log("Starting structured workout creation...");
-	waitForElementThenClick('.buildWorkout')
 }

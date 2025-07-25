@@ -1,7 +1,7 @@
 import { clickWorkoutBlockByTitle } from "./workout";
 import * as WorkoutBlockTypes from './constants/workout-block-types.js';
 import { UI_IDS } from './constants/ui.js';
-import { createWorkout } from './workout-creator.js';
+import { createStructuredWorkout } from './structured-workout.js';
 
 var count = 0;
 
@@ -14,7 +14,7 @@ export function messageHandler(message) {
 		);
 		count++;
 	} else if (message.action === UI_IDS.CREATE_BASE_WORKOUT_BTN) {
-		// TODO: Implement the logic to create a base workout
-		createWorkout()
+		console.log("Creating base workout...");
+		createStructuredWorkout()
 	}
 };

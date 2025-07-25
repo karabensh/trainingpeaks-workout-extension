@@ -19,14 +19,13 @@ export function waitForElement(selector, timeout = 5000) {
 }
 
 export async function waitForElementThenClick(selector, timeout = 5000) {
-	await waitForElement(selector, timeout);
+	const el = await waitForElement(selector, timeout);
 
-	const el = document.querySelector(selector);
-	if (el) {
-		el.dispatchEvent(new MouseEvent('click', { bubbles: true }));
-		console.log(`Element clicked: ${selector}`);
-	}
-	else {
+	if (!el) {
 		console.error(`Element not found for clicking: ${selector}`);
+		return null;
 	}
+
+	el.dispatchEvent(new MouseEvent('click', { bubbles: true }));
+	return el;
 }

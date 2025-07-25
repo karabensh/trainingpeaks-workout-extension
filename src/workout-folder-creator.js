@@ -16,7 +16,6 @@ export function getWorkoutFolder() {
 		if (element.innerText.trim() == WORKOUT_FOLDER_NAME) {
 			const header = element.closest(".listHeader");
 			if (header) {
-				console.log("Found matching listHeader:", header);
 				return header;
 			}
 		}
