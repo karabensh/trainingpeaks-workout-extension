@@ -1,4 +1,4 @@
-const { clickWorkoutBlockByTitle } = require('../src/workout');
+import { clickWorkoutBlockByTitle } from "../src/workout";
 
 test('clicks the block with title "Warm up"', () => {
 	document.body.innerHTML = `
@@ -8,6 +8,9 @@ test('clicks the block with title "Warm up"', () => {
 	`;
 
 	const warmUp = document.querySelector('div.block[title="Warm up"]');
+	if (!warmUp) {
+		throw new Error('Warm up block not found in the document.');
+	}
 	const clickHandler = jest.fn();
 	warmUp.addEventListener('click', clickHandler);
 
@@ -24,6 +27,9 @@ test('does not click a block with a different title', () => {
 	`;
 
 	const coolDown = document.querySelector('div.block[title="Cool down"]');
+	if (!coolDown) {
+		throw new Error('Cool down block not found in the document.');
+	}
 	const clickHandler = jest.fn();
 	coolDown.addEventListener('click', clickHandler);
 

@@ -1,12 +1,7 @@
-// const ejs = require('ejs');
-// const fs = require('fs');
-// const path = require('path');
-// const { UI_IDS } = require('../src/constants/ui.js');
-
 import ejs from "ejs";
 import fs from "fs";
 import path from "path";
-import { UI_IDS } from "./src/constants/ui.js";
+import { UI_IDS } from "./src/constants/ui";
 
 const templatePath = path.resolve(__dirname, '../src/popup.ejs');
 const outputPath = path.resolve(__dirname, '../dist/popup.html');

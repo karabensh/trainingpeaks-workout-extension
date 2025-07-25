@@ -11,7 +11,7 @@ export function openOrCreateWorkoutFolder() {
 const WORKOUT_FOLDER_NAME = 'EZPZ TP Creator';
 
 export function getWorkoutFolder() {
-	const elements = document.querySelectorAll(".workoutLibraryFolder .titleContain");
+	const elements: NodeListOf<HTMLElement> = document.querySelectorAll(".workoutLibraryFolder .titleContain");
 	for (const element of elements) {
 		if (element.innerText.trim() == WORKOUT_FOLDER_NAME) {
 			const header = element.closest(".listHeader");
@@ -66,7 +66,8 @@ function clickFolderButton() {
 }
 
 function enterFolderName() {
-	const folderNameInput = document.querySelector('tp-dialog.createGroup input');
+	const folderNameInput = document.querySelector('tp-dialog.createGroup input') as HTMLInputElement | null;
+
 	if (!folderNameInput) {
 		console.error("Folder name input not found.");
 		return;

@@ -1,5 +1,5 @@
-import { openOrCreateWorkoutFolder, getWorkoutFolder } from './workout-folder-creator.js';
-import { waitForElement, waitForElementThenClick } from './utils.js';
+import { openOrCreateWorkoutFolder, getWorkoutFolder } from './workout-folder-creator';
+import { waitForElement, waitForElementThenClick } from './utils';
 
 export async function initWorkout() {
 	openWorkoutLibraryIfNeeded();
@@ -10,6 +10,11 @@ export async function initWorkout() {
 function openWorkoutLibraryIfNeeded() {
 	// This function checks if the workout library is open and opens it if not.
 	const workoutLibrary = document.querySelector('#exerciseLibrary');
+	if (!workoutLibrary) {
+		console.error("Workout library element not found.");
+		return;
+	}
+
 	if (workoutLibrary.classList.contains('active')) {
 		console.log("Workout library is already open.");
 		return;
@@ -24,7 +29,7 @@ function openWorkoutLibraryIfNeeded() {
 }
 
 async function createWorkoutItem() {
-	element = getWorkoutFolder();
+	var element = getWorkoutFolder();
 	if (element === null) {
 		console.error("Workout folder not found, cannot create workout.");
 		return;
@@ -37,7 +42,7 @@ async function createWorkoutItem() {
 	await selectWorkoutType("Run");
 }
 
-function openOptionsMenu(folderElement) {
+function openOptionsMenu(folderElement: Element) {
 	console.log("We got the folder and will be creating workout in folder:", folderElement);
 	const openOptionsButton = folderElement.querySelector('.foldersettingsButton');
 	if (!openOptionsButton) {
@@ -54,8 +59,8 @@ async function clickCreateWorkoutButton() {
 	console.log("Create workout button clicked, now creating workout...");
 }
 
-async function inputWorkoutName(workoutName) {
-	const folderNameInput = await waitForElement('.createGroup input');
+async function inputWorkoutName(workoutName: string) {
+	const folderNameInput = await waitForElement('.createGroup input') as HTMLInputElement | null;
 	if (!folderNameInput) {
 		console.error("Workout name input not found.");
 		return;
@@ -69,7 +74,7 @@ async function inputWorkoutName(workoutName) {
 
 async function submitFolderCreation() {
 	await waitForElement('.createGroup button');
-	const buttons = document.querySelectorAll(".createGroup button");
+	const buttons: NodeListOf<HTMLElement> = document.querySelectorAll(".createGroup button");
 	for (const button of buttons) {
 		if (button.innerText.trim() == 'Add') {
 			button.dispatchEvent(new MouseEvent('click', { bubbles: true }));
@@ -80,12 +85,12 @@ async function submitFolderCreation() {
 	console.error("'Add' button not found for workout creation.");
 }
 
-async function selectWorkoutType(workoutType) {
+async function selectWorkoutType(workoutType: string) {
 	try {
 		// Wait for the buttons to load
 		await waitForElement(".newItemViewWorkouts button");
 
-		const workoutTypeButtons = document.querySelectorAll(".newItemViewWorkouts button");
+		const workoutTypeButtons: NodeListOf<HTMLElement> = document.querySelectorAll(".newItemViewWorkouts button");
 		for (const button of workoutTypeButtons) {
 			if (button.innerText.trim() == workoutType) {
 				button.dispatchEvent(new MouseEvent('click', { bubbles: true }));

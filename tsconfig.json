@@ -10,7 +10,9 @@
 		"allowJs": true,
 		"checkJs": false,
 		"outDir": "dist",
-		"resolveJsonModule": true
+		"resolveJsonModule": true,
+		"typeRoots": ["./node_modules/@types"],
+		"types": ["jest", "firefox-webext-browser"],
 	},
 	"include": ["src/**/*", "tests/**/*", "scripts/**/*"],
 	"exclude": ["node_modules", "dist"]

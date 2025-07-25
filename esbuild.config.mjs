@@ -5,7 +5,7 @@ import fs from "fs";
 import path from "path";
 import ejs from "ejs";
 import { fileURLToPath } from "url";
-import { UI_IDS } from "./src/constants/ui.js";
+import { UI_IDS } from "./src/constants/ui.ts";
 
 // Resolve __dirname in ESM
 const __filename = fileURLToPath(import.meta.url);
@@ -50,17 +50,22 @@ fs.copyFileSync(path.join(__dirname, manifestFile), path.join(__dirname, outdir,
 // Step 5: Build all JS entry points
 esbuild.buildSync({
 	entryPoints: [
-		"src/content.js",
-		"src/background.js",
-		"src/popup.js"
+		"src/content.ts",
+		"src/background.ts",
+		"src/popup.ts"
 	],
 	outdir,
 	bundle: true,
 	format: target === "firefox" ? "iife" : "esm", // Use ESM for Firefox, IIFE for Chrome
 	platform: "browser",
 	target: ["chrome58", "firefox57"],
-	loader: { ".js": "js" },
+	loader: {
+		".js": "js",
+		".ts": "ts",
+		".tsx": "tsx"
+	},
 	sourcemap: true,
+	external: target === "chrome" ? ["webextension-polyfill"] : [],
 });
 
 console.log(`✅ Build complete for: ${target}`);

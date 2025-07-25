@@ -5,7 +5,7 @@ import { createStructuredWorkout } from './structured-workout.js';
 
 var count = 0;
 
-export function messageHandler(message) {
+export function messageHandler(message: { action: string }) {
 	console.log("Handling message:", message);
 	if (message.action === UI_IDS.TEST_NAMED_BLOCK_BTN) {
 		clickWorkoutBlockByTitle(

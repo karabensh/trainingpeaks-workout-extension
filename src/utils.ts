@@ -1,8 +1,8 @@
-export function sleep(ms) {
+export function sleep(ms: number) {
 	return new Promise(resolve => setTimeout(resolve, ms));
 }
 
-export function waitForElement(selector, timeout = 5000) {
+export function waitForElement(selector: string, timeout: number = 5000): Promise<Element> {
 	return new Promise((resolve, reject) => {
 		const startTime = Date.now();
 		const interval = setInterval(() => {
@@ -18,8 +18,9 @@ export function waitForElement(selector, timeout = 5000) {
 	});
 }
 
-export async function waitForElementThenClick(selector, timeout = 5000) {
-	const el = await waitForElement(selector, timeout);
+
+export async function waitForElementThenClick(selector: string, timeout: number = 5000): Promise<Element | null>{
+	const el = await waitForElement(selector, timeout) as HTMLElement;
 
 	if (!el) {
 		console.error(`Element not found for clicking: ${selector}`);
